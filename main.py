@@ -8,7 +8,7 @@ serverSocket = socket ( AF_INET , SOCK_STREAM )
 while True :
 # Establish the connection
 	print (' Ready to serve ...')
-	connectionSocket , addr = # Fill in code to get a connection
+	connectionSocket , addr = serverSocket.accept()
 	try :
 		message = # Fill in code to read GET request
 		filename = message . split () [1]
@@ -27,5 +27,5 @@ while True :
 		# Fill in
 		# Close client socket
 		# Fill in
-serverSocket . close ()
+serverSocket.close()
 sys . exit () # Terminate the program after sending the corresponding data
