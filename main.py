@@ -16,7 +16,7 @@ while True :
 		filename = message . split () [1]
 		# Fill in security code
 		f = open ( filename )
-		outputdata = # Fill in code to read data from the file
+		outputdata = f.read() # Fill in code to read data from the file
 		# Send HTTP header line ( s ) into socket
 		connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')# Fill in code to send header ( s )
 		# Send the content of the requested file to the client
