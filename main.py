@@ -7,7 +7,7 @@ serverSocket = socket ( AF_INET , SOCK_STREAM )
 # Fill in code to set up the port
 while True :
 # Establish the connection
-	print ( ’ Ready to serve ... ’)
+	print (' Ready to serve ...')
 	connectionSocket , addr = # Fill in code to get a connection
 	try :
 		message = # Fill in code to read GET request
