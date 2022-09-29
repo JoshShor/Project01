@@ -17,8 +17,8 @@ while True :
 		# Fill in security code
 		f = open ( filename )
 		outputdata = f.read() # Fill in code to read data from the file
-		# Send HTTP header line ( s ) into socket
-		connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')# Fill in code to send header ( s )
+		connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')# Send HTTP header line ( s ) into socket
+		# Fill in code to send header ( s )
 		# Send the content of the requested file to the client
 		for i in range (0 , len ( outputdata ) ) :
 			connectionSocket . send ( outputdata [ i ]. encode () )
