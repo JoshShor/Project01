@@ -14,7 +14,7 @@ while True :
 	try :
 		message = connectionSocket.recv(1024).decode() # Fill in code to read GET request
 		filename = message . split () [1]
-		# Fill in security code
+		connectionSocket.send('HTTP/1.1 403 Forbidden\r\n\r\n')# Fill in security code
 		f = open ( filename )
 		outputdata = f.read() # Fill in code to read data from the file
 		connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')# Send HTTP header line ( s ) into socket
