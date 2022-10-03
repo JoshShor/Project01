@@ -14,10 +14,13 @@ while True :
 	try :
 		message = connectionSocket.recv(1024).decode() # Fill in code to read GET request
 		filename = message . split () [1]
-		connectionSocket.send('HTTP/1.1 403 Forbidden\r\n\r\n')# Fill in security code
+		if("" in filename):
+			connectionSocket.send('HTTP/1.1 403 Forbidden\r\n\r\n')# Fill in security code
+			connectionSocket.close()
+			break;
 		f = open ( filename )
 		outputdata = f.read() # Fill in code to read data from the file
-		connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')# Send HTTP header line ( s ) into socket
+		connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')	# Send HTTP header line ( s ) into socket
 		# Fill in code to send header ( s )
 		# Send the content of the requested file to the client
 		for i in range (0 , len ( outputdata ) ) :
@@ -25,9 +28,9 @@ while True :
 		connectionSocket.send ( " \ r \ n " . encode () )
 		connectionSocket.close ()
 	except IOError :
-		connectionSocket.send('HTTP/1.1 404 Not Found\r\n\r\n')# Send response message for file not found
-		# Fill in
+		connectionSocket.send("HTTP/1.1 404 Not Found\r\n\r\n".encode())# Send response message for file not found
+			# Fill in
 		connectionSocket.close()# Close client socket
-		# Fill in
+			# Fill in
 serverSocket . close ()
 sys . exit () # Terminate the program after sending the corresponding data
