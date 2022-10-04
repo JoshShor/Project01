@@ -3,7 +3,7 @@ from socket import *
 import sys  # In order to terminate the program
 
 serverSocket = socket(AF_INET, SOCK_STREAM)
-serverPort = 8000  # Prepare a server socket on a particular port
+serverPort = 1212  # Prepare a server socket on a particular port
 serverHost = '127.0.0.1'
 # Fill in code to set up the port
 serverSocket.bind((serverHost, serverPort))
@@ -21,8 +21,10 @@ while True:
         message = connectionSocket.recv(1024).decode()  # Fill in code to read GET request
         filename = message.split()[1]
         print("FILENAME: " + filename)
-        if "/../" in filename:
+        if "/grades/" in filename:
             connectionSocket.send('HTTP/1.1 403 Forbidden\r\n\r\n'.encode())  # Fill in security code
+            connectionSocket.send("<html><head></head><body><center><h1>403 Forbidden</h1></center><p>You do not have "
+                                  "permission to access this page</p></body></html>\r\n".encode())
             connectionSocket.close()
             break
         f = open(filename[1:])
