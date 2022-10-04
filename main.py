@@ -8,7 +8,7 @@ serverHost = '127.0.0.1'
 # Fill in code to set up the port
 serverSocket.bind((serverHost, serverPort))
 serverSocket.listen(1)
-print("test ouside while")
+print("test outside while")
 while True:
     # Establish the connection
     print("inside while")
@@ -20,13 +20,14 @@ while True:
         print("at the try block")
         message = connectionSocket.recv(1024).decode()  # Fill in code to read GET request
         filename = message.split()[1]
+        print("FILENAME: " + filename)
         if "/../" in filename:
-            connectionSocket.send('HTTP/1.1 403 Forbidden\r\n\r\n')  # Fill in security code
+            connectionSocket.send('HTTP/1.1 403 Forbidden\r\n\r\n'.encode())  # Fill in security code
             connectionSocket.close()
             break
-        f = open(filename)
+        f = open(filename[1:])
         outputdata = f.read()  # Fill in code to read data from the file
-        connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n')  # Send HTTP header line ( s ) into socket
+        connectionSocket.send('HTTP/1.1 200 OK\r\n\r\n'.encode())  # Send HTTP header line ( s ) into socket
         # Fill in code to send header ( s )
         # Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
