@@ -14,7 +14,7 @@ while True:
     print("inside while")
     print(' Ready to serve ...')
     connectionSocket, addr = serverSocket.accept()  # Fill in code to get a connection
-    print("connection address: " + addr)
+    print("connection address: " + str(addr))
     print("test test test test test")
     try:
         print("at the try block")
