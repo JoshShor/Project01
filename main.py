@@ -3,16 +3,21 @@ from socket import *
 import sys  # In order to terminate the program
 
 serverSocket = socket(AF_INET, SOCK_STREAM)
-serverPort = 18000  # Prepare a server socket on a particular port
+serverPort = 8000  # Prepare a server socket on a particular port
+serverHost = '127.0.0.1'
 # Fill in code to set up the port
-serverSocket.bind(('', serverPort))
+serverSocket.bind((serverHost, serverPort))
 serverSocket.listen(1)
+print("test ouside while")
 while True:
     # Establish the connection
+    print("inside while")
     print(' Ready to serve ...')
     connectionSocket, addr = serverSocket.accept()  # Fill in code to get a connection
     print("connection address: " + addr)
+    print("test test test test test")
     try:
+        print("at the try block")
         message = connectionSocket.recv(1024).decode()  # Fill in code to read GET request
         filename = message.split()[1]
         if "/../" in filename:
